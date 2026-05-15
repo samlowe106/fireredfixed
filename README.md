@@ -1,6 +1,6 @@
 # FireRed Fixed
 
-This is a minimal ROM hack of Pokemon FireRed and LeafGreen with changes that allow completing the regional dex and most of the National Dex without external tools or trades and a handful of fixes. Based on the decompilation at [pret/pokefirered](https://github.com/pret/pokefirered). For contacts and other pret projects, see [pret.github.io](https://pret.github.io/).
+This is a minimal ROM hack of Pokemon FireRed and LeafGreen with changes that allow completing the regional dex and most of the National Dex without external tools or trades and a handful of fixes. Based on the decompilation at [pret/pokefirered](https://github.com/pret/pokefirered).
 
 ## Regional Dex Changes
 
@@ -14,7 +14,6 @@ This is a minimal ROM hack of Pokemon FireRed and LeafGreen with changes that al
   - [ ] Scyther (Lv.25)
   - [ ] Porygon (Lv.30)
 - [ ] Khangaskhan, Chansey, Tauros, Scyther, and Pinsir will now only appear in their individually assigned Areas in the Safari Zone, but are more common there
-- [ ] The Old Sea Map can now be found in the basement of the Pokemon Mansion, and Faraway Island can be accessed after finding Lostelle
 
 ## Quality of Life Changes
 
@@ -28,6 +27,7 @@ This is a minimal ROM hack of Pokemon FireRed and LeafGreen with changes that al
 
 ## Post-Game Changes
 
+- [ ] The Old Sea Map can now be obtained from Mr. Fuji after entering the Hall of Fame
 - [ ] Professor Oak gives a random Johto starter egg when you unlock the National Dex
 - [ ] Celio gives a different random Johto starter egg when you arrive on the Sevii Islands after unlocking the National Dex
 - [ ] Professor Oak gives the final Johto starter egg when you complete the Regional Dex
