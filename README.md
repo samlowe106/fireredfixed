@@ -1,16 +1,46 @@
-# Pokémon FireRed and LeafGreen
+# FireRed Fixed
 
-This is a decompilation of English Pokémon FireRed and LeafGreen.
+This is a minimal ROM hack of Pokemon FireRed and LeafGreen with changes that allow completing the regional dex and most of the National Dex without external tools or trades and a handful of fixes. Based on the decompilation at [pret/pokefirered](https://github.com/pret/pokefirered). For contacts and other pret projects, see [pret.github.io](https://pret.github.io/).
 
-It builds the following ROM images:
+## Regional Dex Changes
 
-* [**pokefirered.gba**](https://datomatic.no-intro.org/?page=show_record&s=23&n=1616) `sha1: 41cb23d8dccc8ebd7c649cd8fbb58eeace6e2fdc`
-* [**pokeleafgreen.gba**](https://datomatic.no-intro.org/?page=show_record&s=23&n=1617) `sha1: 574fa542ffebb14be69902d1d36f1ec0a4afd71e`
-* [**pokefirered_rev1.gba**](https://datomatic.no-intro.org/?page=show_record&s=23&n=1672) `sha1: dd5945db9b930750cb39d00c84da8571feebf417`
-* [**pokeleafgreen_rev1.gba**](https://datomatic.no-intro.org/index.php?page=show_record&s=23&n=1668) `sha1: 7862c67bdecbe21d1d69ce082ce34327e1c6ed5e`
-* [**pokefirered_switch.gba**](https://datomatic.no-intro.org/index.php?page=show_record&s=23&n=x550) `sha1: baa452d0b24629dd7782cfc07a8984085dde1311`
-* [**pokeleafgreen_switch.gba**](https://datomatic.no-intro.org/index.php?page=show_record&s=23&n=x551) `sha1: 62b9fc77549dbc67032eb6cbd0ea6ad3b825690f`
+[ ] All encounter tables have been merged and renormalized so version exclusive Pokemon can be found anywhere they could be found in either FireRed or LeafGreen. These Pokemon maintain their original encounter rates (at the cost of slightly reducing the encounter rates of Pokemon common to both games)
+[ ] Mirror trades for Alakazam, Golem, Machamp, and Gengar have been added
+[ ] The Celadon Prize Corner now has Pokemon from both games, all of which are cheaper:
+  [ ] Abra (Lv.5)
+  [ ] Clefairy (Lv.10)
+  [ ] Dratini (Lv.15)
+  [ ] Pinsir (Lv.20)
+  [ ] Scyther (Lv.25)
+  [ ] Porygon (Lv.30)
+[ ] Khangaskhan, Chansey, Tauros, Scyther, and Pinsir will now only appear in their individually assigned Areas in the Safari Zone, but are more common there
+[ ] The Old Sea Map can now be found in the basement of the Pokemon Mansion, and Faraway Island can be accessed after finding Lostelle
+
+## Quality of Life Changes
+
+[ ] All TMs are now reusable
+[ ] The player can now run indoors
+[ ] The Safari Zone mechanics for Rock and Bait have been rebalanced to work closer to what was probably intended:
+  [ ] Rock increases the catch rate so Pokemon require fewer Safari Balls on average, but increases the risk of them fleeing
+  [ ] Bait decreases the catch rate so Pokemon require more Safari Balls on average, but decreases the risk of them fleeing
+[ ] The FireRed/LeafGreen intro video will be random every time with equal probability
+[ ] A spelling error has been fixed in the Teachy TV
+
+## Post-Game Changes
+
+[ ] Professor Oak gives a random Johto starter egg when you unlock the National Dex
+[ ] Celio gives a different random Johto starter egg when you arrive on the Sevii Islands after unlocking the National Dex
+[ ] Professor Oak gives the final Johto starter egg when you complete the Regional Dex
+[ ] After unlocking the National Dex, Eevees who reach enough friendship will be able to evolve into Umbreon at even levels or Espeon at odd levels
+[ ] Raikou, Suicune, and Entei will all roam regardless of which starter Pokemon you chose
+[x] Fixed Raikou and Entei permanently disappearing after they used Roar while roaming:
+  [x] Spark and Roar have been swapped in Raikou's level up learnset, so it won't know it when it's encountered
+  [x] Stomp and Roar have been swapped in Entei's level up learnset, so it won't know it when it's encountered
+  [x] Suicune never learned Roar anyways, so no changes to Suicune
+[ ] An NPC has been added to the Sevii Islands who will give you an egg for the Kanto starter Pokemon that your starter is strong against
+[ ] An NPC has been added to the Sevii Islands who will give you an egg for the Kanto starter Pokemon that your starter is weak to
+[ ] Celio will give out the Aurora Ticket and Mystic Ticket after establishing the trading link with Hoenn
+
+# Installation
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
-
-For contacts and other pret projects, see [pret.github.io](https://pret.github.io/).
