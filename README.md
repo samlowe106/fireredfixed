@@ -28,9 +28,6 @@ This is a minimal ROM hack of Pokemon FireRed and LeafGreen with changes that al
 ## Post-Game Changes
 
 - [ ] The Old Sea Map can now be obtained from Mr. Fuji after entering the Hall of Fame
-- [ ] Professor Oak gives a random Johto starter egg when you unlock the National Dex
-- [ ] Celio gives a different random Johto starter egg when you arrive on the Sevii Islands after unlocking the National Dex
-- [ ] Professor Oak gives the final Johto starter egg when you complete the Regional Dex
 - [ ] After unlocking the National Dex, Eevees who reach enough friendship will be able to evolve into Umbreon at even levels or Espeon at odd levels
 - [ ] Raikou, Suicune, and Entei will all roam regardless of which starter Pokemon you chose
 - [x] Fixed Raikou and Entei permanently disappearing after they used Roar while roaming:
