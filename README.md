@@ -1,6 +1,6 @@
 # FireRed Fixed
 
-This is a minimal ROM hack of Pokemon FireRed and LeafGreen with changes that allow completing the regional dex and most of the National Dex without external tools or trades and a handful of fixes. Based on the decompilation at [pret/pokefirered](https://github.com/pret/pokefirered).
+This is a minimal ROM hack of Pokemon FireRed and LeafGreen that allows completing the Regional Dex and most of the National Dex without external tools or trades, plus a handful of fixes. Based on the decompilation at [pret/pokefirered](https://github.com/pret/pokefirered).
 
 ## Regional Dex Changes
 
