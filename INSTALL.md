@@ -7,6 +7,43 @@ In general, you should not need to open these unless if you get an error or if y
 
 If you run into trouble, ask for help on Discord or IRC (see [README.md](README.md)).
 
+## Quick start
+
+If you just want a ROM with minimal setup, pick one of these. The detailed per-OS
+instructions further down are still available if you'd rather build fully natively.
+
+### Option A — Build in Docker (no toolchain to install)
+
+Requires only [Docker](https://docs.docker.com/get-docker/) (Docker Desktop on
+macOS/Windows). The build runs in a container and writes the ROM back to this folder,
+owned by you. Works the same on Linux, macOS, and Windows.
+
+```bash
+tools/build-docker.sh            # FireRed, matching build (agbcc)
+tools/build-docker.sh modern     # build with arm-none-eabi-gcc
+tools/build-docker.sh leafgreen  # LeafGreen
+tools/build-docker.sh compare    # build + verify against the original ROM
+```
+
+The first run builds the image (a few minutes); later runs are cached.
+
+### Option B — VS Code Dev Container / GitHub Codespaces
+
+Open the repo in VS Code and choose **"Reopen in Container"** (Dev Containers
+extension), or open it in a GitHub Codespace. You get a ready-to-build shell with the
+whole toolchain and agbcc already installed — just run `make` (or `make modern`).
+
+### Option C — Native build (Linux / macOS)
+
+```bash
+tools/setup.sh        # installs the toolchain + agbcc (apt on Linux, brew on macOS)
+make -j$(nproc)       # or: make modern -j$(nproc)
+```
+
+On **Windows**, run that inside [WSL2](https://learn.microsoft.com/windows/wsl/install)
+(it behaves exactly like Linux). For a fully manual native setup, or for non-apt
+Linux / devkitPro, see the platform sections below.
+
 ## Windows
 Windows has instructions for building with three possible terminals, providing 3 different options in case the user stumbles upon unexpected errors.
 - [Windows 10/11 (WSL1)](#windows-1011-wsl1) (**Fastest, highly recommended**, Windows 10 and 11 only)
