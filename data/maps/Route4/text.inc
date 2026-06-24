@@ -77,3 +77,20 @@ Route4_Text_PeopleLikeAndRespectBrock::
     .string "People like and respect him.\p"
     .string "I want to become a GYM LEADER\n"
     .string "like him.$"
+
+@ DEOXYS Forme meteorites
+Route4_Text_MeteorNormal::
+    .string "A well-rounded meteorite. It's\n"
+    .string "very normal for a space rock.$"
+
+Route4_Text_MeteorAttack::
+    .string "A sharp, spiked meteorite. It looks\n"
+    .string "almost like a mace.$"
+
+Route4_Text_MeteorDefense::
+    .string "A dense, heavy meteorite. It looks\n"
+    .string "kind of like a turtle shell.$"
+
+Route4_Text_MeteorSpeed::
+    .string "A sleek, aerodynamic meteorite. It\n"
+    .string "impacted at a high speed.$"
