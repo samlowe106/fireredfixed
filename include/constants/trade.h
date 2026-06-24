@@ -19,6 +19,11 @@
 #define INGAME_TRADE_ELECTRODE 6
 #define INGAME_TRADE_TANGELA   7
 #define INGAME_TRADE_SEEL      8
+// Mirror trades: give a trade-evolution mon, get the same species back (so it evolves)
+#define INGAME_TRADE_KADABRA   9   // -> Alakazam
+#define INGAME_TRADE_MACHOKE   10  // -> Machamp
+#define INGAME_TRADE_GRAVELER  11  // -> Golem
+#define INGAME_TRADE_HAUNTER   12  // -> Gengar
 
 // Return values for CanTradeSelectedMon and CanSpinTradeMon
 #define CAN_TRADE_MON              0
