@@ -1,0 +1,13 @@
+{
+    "name": "FireRed Fixed",
+    "build": { "dockerfile": "Dockerfile" },
+    "remoteUser": "vscode",
+    // Copy the pre-built agbcc into the workspace so `make` (matching build) works
+    // immediately. `make modern` doesn't need it.
+    "postCreateCommand": "cd /opt/agbcc && ./install.sh \"${containerWorkspaceFolder}\"",
+    "customizations": {
+        "vscode": {
+            "extensions": ["ms-vscode.cpptools"]
+        }
+    }
+}
