@@ -18,7 +18,7 @@ struct RoamerPair
 static s32 GetRoamerIndex(u16 species);
 static s32 GetRoamerPokedexAreaMarkers(u16 species, struct Subsprite * subsprites);
 static bool32 IsSpeciesOnMap(const struct WildPokemonHeader * data, s32 species);
-static bool32 IsSpeciesInEncounterTable(const struct WildPokemonInfo * pokemon, s32 species, s32 count);
+static bool32 IsSpeciesInEncounterTable(const struct WildPokemonInfo * pokemon, s32 species);
 static u16 GetMapSecIdFromWildMonHeader(const struct WildPokemonHeader * header);
 static bool32 FindDexAreaByMapSec(u16 mapSecId, const u16 (*lut)[2], s32 count, s32 * lutIdx_p, u16 * tableIdx_p);
 
@@ -261,30 +261,33 @@ static s32 GetRoamerPokedexAreaMarkers(u16 species, struct Subsprite * subsprite
 
 static bool32 IsSpeciesOnMap(const struct WildPokemonHeader * data, s32 species)
 {
-    if (IsSpeciesInEncounterTable(data->landMonsInfo, species, LAND_WILD_COUNT))
+    s32 rod;
+
+    if (IsSpeciesInEncounterTable(data->landMonsInfo, species))
         return TRUE;
-    if (IsSpeciesInEncounterTable(data->waterMonsInfo, species, WATER_WILD_COUNT))
+    if (IsSpeciesInEncounterTable(data->waterMonsInfo, species))
         return TRUE;
-// When searching the fishing encounters, this incorrectly uses the size of the land encounters.
-// As a result it's reading out of bounds of the fishing encounters tables.
-#ifdef BUGFIX
-    if (IsSpeciesInEncounterTable(data->fishingMonsInfo, species, FISH_WILD_COUNT))
-#else
-    if (IsSpeciesInEncounterTable(data->fishingMonsInfo, species, LAND_WILD_COUNT))
-#endif
-        return TRUE;
-    if (IsSpeciesInEncounterTable(data->rockSmashMonsInfo, species, ROCK_WILD_COUNT))
+    // fishingMonsInfo points to one WildPokemonInfo per rod (old/good/super).
+    if (data->fishingMonsInfo != NULL)
+    {
+        for (rod = 0; rod < 3; rod++)
+        {
+            if (IsSpeciesInEncounterTable(&data->fishingMonsInfo[rod], species))
+                return TRUE;
+        }
+    }
+    if (IsSpeciesInEncounterTable(data->rockSmashMonsInfo, species))
         return TRUE;
 
     return FALSE;
 }
 
-static bool32 IsSpeciesInEncounterTable(const struct WildPokemonInfo * info, s32 species, s32 count)
+static bool32 IsSpeciesInEncounterTable(const struct WildPokemonInfo * info, s32 species)
 {
     s32 i;
     if (info != NULL)
     {
-        for (i = 0; i < count; i++)
+        for (i = 0; i < info->wildPokemonCount; i++)
         {
             if (info->wildPokemon[i].species == species)
                 return TRUE;
