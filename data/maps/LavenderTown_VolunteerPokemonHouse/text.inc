@@ -65,3 +65,35 @@ LavenderTown_VolunteerPokemonHouse_Text_PokemonMagazinesLineShelf::
     .string "POKéMON INSIDER…\p"
     .string "POKéMON FAN…$"
 
+@ STUB text: Mr. Fuji's OLD SEA MAP hand-off (after the Hall of Fame). Rewrite freely.
+LavenderTown_VolunteerPokemonHouse_Text_MrFujiOfferOldSeaMap::
+    .string "MR. FUJI: Ah, {PLAYER}. I hear\n"
+    .string "you've entered the HALL OF FAME.\p"
+    .string "But what's more... you are a\n"
+    .string "kindhearted TRAINER.\p"
+    .string "I've kept this old map for years\n"
+    .string "as a memento of our mistake on\p"
+    .string "CINNABAR...$"
+
+LavenderTown_VolunteerPokemonHouse_Text_MrFujiOldSeaMapExplain::
+    .string "It charts the way to an island\n"
+    .string "few have ever seen. Please,\p"
+    .string "treat the POKéMON you find there\n"
+    .string "with respect.$"
+
+LavenderTown_VolunteerPokemonHouse_Text_MrFujiOldSeaMapNotCleared::
+    .string "MR. FUJI: Come and see me once\n"
+    .string "you've entered the HALL OF FAME.$"
+
+LavenderTown_VolunteerPokemonHouse_Text_MrFujiOldSeaMapAlready::
+    .string "MR. FUJI: Please, treat the\n"
+    .string "POKéMON you find there with respect.$"
+
+LavenderTown_VolunteerPokemonHouse_Text_MrFujiReceivedOldSeaMap::
+    .string "{PLAYER} received the\n"
+    .string "OLD SEA MAP!$"
+
+LavenderTown_VolunteerPokemonHouse_Text_MrFujiOldSeaMapNoRoom::
+    .string "MR. FUJI: Hm? Your BAG is full.\n"
+    .string "Make some room for it first.$"
+
