@@ -4,26 +4,28 @@ This is a minimal ROM hack of Pokemon FireRed and LeafGreen that allows completi
 
 ## Regional Dex Changes
 
-- [ ] All encounter tables have been merged and renormalized so version exclusive Pokemon can be found anywhere they could be found in either FireRed or LeafGreen. These Pokemon maintain their original encounter rates (at the cost of slightly reducing the encounter rates of Pokemon common to both games)
-- [ ] Mirror trades for Alakazam, Golem, Machamp, and Gengar have been added
-- [ ] The Celadon Prize Corner now has Pokemon from both games, all of which are cheaper:
-  - [ ] Abra (Lv.5)
-  - [ ] Clefairy (Lv.10)
-  - [ ] Dratini (Lv.15)
-  - [ ] Pinsir (Lv.20)
-  - [ ] Scyther (Lv.25)
-  - [ ] Porygon (Lv.30)
-- [ ] Khangaskhan, Chansey, Tauros, Scyther, and Pinsir will now only appear in their individually assigned Areas in the Safari Zone, but are more common there
+- [x] All encounter tables have been merged and renormalized so version exclusive Pokemon can be found anywhere they could be found in either FireRed or LeafGreen. These version-exclusive Pokemon maintain their original encounter rates (at the cost of slightly reducing the encounter rates of Pokemon common to both games)
+- [x] Mirror trades for Alakazam, Golem, Machamp, and Gengar have been added (you trade the same species back, so it evolves):
+  - [x] Trade data defined: Kadabra (Timid), Machoke (Adamant), Graveler (Impish), Haunter (Timid)
+  - [x] A trade-machine NPC in the Saffron City Cable Club (Pokémon Center 2F) offers all four via a menu
+- [x] The Celadon Prize Corner now has Pokemon from both games, all of which are cheaper:
+  - [x] Abra (Lv.5)
+  - [x] Clefairy (Lv.10)
+  - [x] Dratini (Lv.15)
+  - [x] Pinsir (Lv.20)
+  - [x] Scyther (Lv.25)
+  - [x] Porygon (Lv.30)
+- [x] Khangaskhan, Chansey, Tauros, Scyther, and Pinsir will now only appear in their individually assigned Areas in the Safari Zone, but are more common there
 
 ## Quality of Life Changes
 
-- [ ] All TMs are now reusable
-- [ ] The player can now run indoors
-- [ ] The Safari Zone mechanics for Rock and Bait have been rebalanced to work closer to what was probably intended:
-  - [ ] Rock increases the catch rate so Pokemon require fewer Safari Balls on average, but increases the risk of them fleeing
-  - [ ] Bait decreases the catch rate so Pokemon require more Safari Balls on average, but decreases the risk of them fleeing
+- [x] All TMs are now reusable
+- [x] The player can now run indoors
+- [x] The Safari Zone mechanics for Rock and Bait have been rebalanced to work closer to what was probably intended:
+  - [x] Rock increases the catch rate so Pokemon require fewer Safari Balls on average, but increases the risk of them fleeing
+  - [x] Bait decreases the catch rate so Pokemon require more Safari Balls on average, but decreases the risk of them fleeing
 - [ ] The FireRed/LeafGreen intro video will be random every time with equal probability
-- [ ] A spelling error has been fixed in the Teachy TV
+- [x] A spelling error has been fixed in the Teachy TV
 
 ## Post-Game Changes
 
@@ -37,6 +39,7 @@ This is a minimal ROM hack of Pokemon FireRed and LeafGreen that allows completi
 - [ ] An NPC has been added to the Sevii Islands who will give you an egg for the Kanto starter Pokemon that your starter is strong against
 - [ ] An NPC has been added to the Sevii Islands who will give you an egg for the Kanto starter Pokemon that your starter is weak to
 - [ ] Celio will give out the Aurora Ticket and Mystic Ticket after establishing the trading link with Hoenn
+- [ ] Meteorites have been added to Route 4 outside the entrance to Mt. Moon that allow Deoxys to change formes
 
 # Installation
 
