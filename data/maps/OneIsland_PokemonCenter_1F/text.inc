@@ -355,3 +355,33 @@ OneIsland_PokemonCenter_1F_Text_MachineLinkedWithKantoAndHoenn::
 OneIsland_PokemonCenter_1F_Text_ObtainedTriPass::
     .string "Obtained the TRI-PASS!$"
 
+@ STUB text: Celio's Aurora/Mystic Ticket hand-off. Rewrite freely.
+OneIsland_PokemonCenter_1F_Text_CelioTicketsIntro::
+    .string "CELIO: Now that we're linked up\n"
+    .string "with HOENN, these turned up here.\p"
+    .string "I'd like you to have them!$"
+
+OneIsland_PokemonCenter_1F_Text_CelioReceivedAuroraTicket::
+    .string "{PLAYER} received the\n"
+    .string "AURORA TICKET!$"
+
+OneIsland_PokemonCenter_1F_Text_CelioReceivedMysticTicket::
+    .string "{PLAYER} received the\n"
+    .string "MYSTIC TICKET!$"
+
+OneIsland_PokemonCenter_1F_Text_CelioTicketsOutro::
+    .string "Each one is said to lead to a\n"
+    .string "faraway island. Do go and see!$"
+
+OneIsland_PokemonCenter_1F_Text_CelioTicketsNoLink::
+    .string "CELIO: Once the link with HOENN\n"
+    .string "is established, come see me.$"
+
+OneIsland_PokemonCenter_1F_Text_CelioTicketsAlready::
+    .string "CELIO: I hope those tickets take\n"
+    .string "you somewhere wonderful!$"
+
+OneIsland_PokemonCenter_1F_Text_CelioTicketsNoRoom::
+    .string "CELIO: Hm? Your BAG is full.\n"
+    .string "Make some room, then see me.$"
+
