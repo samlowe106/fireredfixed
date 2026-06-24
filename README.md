@@ -24,7 +24,7 @@ This is a minimal ROM hack of Pokemon FireRed and LeafGreen that allows completi
 - [x] The Safari Zone mechanics for Rock and Bait have been rebalanced to work closer to what was probably intended:
   - [x] Rock increases the catch rate so Pokemon require fewer Safari Balls on average, but increases the risk of them fleeing
   - [x] Bait decreases the catch rate so Pokemon require more Safari Balls on average, but decreases the risk of them fleeing
-- [ ] The FireRed/LeafGreen intro video will be random every time with equal probability
+- [x] The FireRed/LeafGreen title screen (Charizard/flames or Venusaur/leaves, plus the logo and colors) is chosen at random every boot with equal probability
 - [x] A spelling error has been fixed in the Teachy TV
 
 ## Post-Game Changes
@@ -37,7 +37,7 @@ This is a minimal ROM hack of Pokemon FireRed and LeafGreen that allows completi
   - [x] Stomp and Roar have been swapped in Entei's level up learnset, so it won't know it when it's encountered
   - [x] Suicune never learned Roar anyways, so no changes to Suicune
 - [ ] An NPC has been added to the Sevii Islands who will give you an egg for the Kanto starter Pokemon that your starter is strong against
-- [ ] An NPC has been added to the Sevii Islands who will give you an egg for the Kanto starter Pokemon that your starter is weak to
+- [ ] An NPC has been added to the Sevii Islands who will give you an egg for the Kanto starter Pokemon that your starter is weak against
 - [ ] Celio will give out the Aurora Ticket and Mystic Ticket after establishing the trading link with Hoenn
 - [ ] Meteorites have been added to Route 4 outside the entrance to Mt. Moon that allow Deoxys to change formes
 
