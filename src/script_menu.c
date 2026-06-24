@@ -315,19 +315,12 @@ static const struct MenuAction sMultichoiceList_BikeShop[] = {
 };
 
 static const struct MenuAction sMultichoiceList_GameCornerPokemonPrizes[] = {
-#if defined(FIRERED)
-    { gText_Abra_180Coins },
-    { gText_Clefairy_500Coins },
-    { gText_Dratini_2800Coins },
-    { gText_Scyther_5500Coins },
-    { gText_Porygon_9999Coins },
-#elif defined(LEAFGREEN)
     { gText_Abra_120Coins },
-    { gText_Clefairy_750Coins },
-    { gText_Pinsir_2500Coins },
-    { gText_Dratini_4600Coins },
+    { gText_Clefairy_400Coins },
+    { gText_Dratini_1500Coins },
+    { gText_Pinsir_2000Coins },
+    { gText_Scyther_4000Coins },
     { gText_Porygon_6500Coins },
-#endif
     { gText_NoThanks_2 }
 };
 
@@ -502,7 +495,16 @@ static const struct MenuAction sMultichoiceList_Exit[] = {
     { gOtherText_Exit }
 };
 
+static const struct MenuAction sMultichoiceList_TradeStation[] = {
+    { gText_TradeStationKadabra },
+    { gText_TradeStationMachoke },
+    { gText_TradeStationGraveler },
+    { gText_TradeStationHaunter },
+    { gText_Exit }
+};
+
 static const struct MultichoiceListStruct sMultichoiceLists[] = {
+    [MULTICHOICE_TRADE_STATION]                              = MULTICHOICE(sMultichoiceList_TradeStation),
     [MULTICHOICE_YES_NO]                                     = MULTICHOICE(sMultichoiceList_YesNo),
     [MULTICHOICE_EEVEELUTIONS]                               = MULTICHOICE(sMultichoiceList_Eeveelutions),
     [MULTICHOICE_TRAINER_CARD_ICON_TINT]                     = MULTICHOICE(sMultichoiceList_TrainerCardIconTint),
