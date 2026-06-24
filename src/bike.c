@@ -252,8 +252,8 @@ bool8 RS_IsRunningDisallowed(u8 r0)
 
 bool32 IsRunningDisallowed(u8 metatileBehavior)
 {
-    if (!gMapHeader.allowRunning)
-        return TRUE;
+    // Running is allowed everywhere (including indoors); only tiles that forbid
+    // biking still block it. The per-map allowRunning gate is intentionally ignored.
     if (MetatileBehaviorForbidsBiking(metatileBehavior) != TRUE)
         return FALSE;
     else
