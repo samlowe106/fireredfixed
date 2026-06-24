@@ -561,3 +561,41 @@ OneIsland_PokemonCenter_1F_Movement_BillExit::
 	walk_left
 	walk_down
 	step_end
+
+@ ---------------------------------------------------------------------------
+@ STUB: Celio hands over the Aurora Ticket and Mystic Ticket once the Hoenn
+@ trading link is established. Hook this into Celio's interaction (call/goto it
+@ from his EventScript) once the dialog is finalized.
+@ ---------------------------------------------------------------------------
+OneIsland_PokemonCenter_1F_EventScript_CelioGiveTickets::
+	lock
+	faceplayer
+	goto_if_unset FLAG_SYS_CAN_LINK_WITH_RS, OneIsland_PokemonCenter_1F_EventScript_CelioTicketsNoLink
+	goto_if_set FLAG_RECEIVED_MYSTIC_TICKET, OneIsland_PokemonCenter_1F_EventScript_CelioTicketsAlready
+	msgbox OneIsland_PokemonCenter_1F_Text_CelioTicketsIntro
+	checkitemspace ITEM_AURORA_TICKET
+	goto_if_eq VAR_RESULT, FALSE, OneIsland_PokemonCenter_1F_EventScript_CelioTicketsNoRoom
+	giveitem_msg OneIsland_PokemonCenter_1F_Text_CelioReceivedAuroraTicket, ITEM_AURORA_TICKET, 1, MUS_OBTAIN_KEY_ITEM
+	setflag FLAG_RECEIVED_AURORA_TICKET
+	checkitemspace ITEM_MYSTIC_TICKET
+	goto_if_eq VAR_RESULT, FALSE, OneIsland_PokemonCenter_1F_EventScript_CelioTicketsNoRoom
+	giveitem_msg OneIsland_PokemonCenter_1F_Text_CelioReceivedMysticTicket, ITEM_MYSTIC_TICKET, 1, MUS_OBTAIN_KEY_ITEM
+	setflag FLAG_RECEIVED_MYSTIC_TICKET
+	msgbox OneIsland_PokemonCenter_1F_Text_CelioTicketsOutro
+	release
+	end
+
+OneIsland_PokemonCenter_1F_EventScript_CelioTicketsNoLink::
+	msgbox OneIsland_PokemonCenter_1F_Text_CelioTicketsNoLink
+	release
+	end
+
+OneIsland_PokemonCenter_1F_EventScript_CelioTicketsAlready::
+	msgbox OneIsland_PokemonCenter_1F_Text_CelioTicketsAlready
+	release
+	end
+
+OneIsland_PokemonCenter_1F_EventScript_CelioTicketsNoRoom::
+	msgbox OneIsland_PokemonCenter_1F_Text_CelioTicketsNoRoom
+	release
+	end
