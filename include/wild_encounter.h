@@ -15,11 +15,13 @@ struct WildPokemon
     u8 minLevel;
     u8 maxLevel;
     u16 species;
+    u8 encounterChance; // relative weight; a mon's encounter probability is its weight / sum of weights
 };
 
 struct WildPokemonInfo
 {
     u8 encounterRate;
+    u8 wildPokemonCount;            // number of entries in wildPokemon
     const struct WildPokemon *wildPokemon;
 };
 
