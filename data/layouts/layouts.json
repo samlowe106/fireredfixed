@@ -3908,6 +3908,18 @@
       "blockdata_filepath": "data/layouts/BirthIsland_Exterior/map.bin"
     },
     {
+      "id": "LAYOUT_FARAWAY_ISLAND_INTERIOR",
+      "name": "FarawayIsland_Interior_Layout",
+      "width": 24,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_SeviiIslands123",
+      "border_filepath": "data/layouts/FarawayIsland_Interior/border.bin",
+      "blockdata_filepath": "data/layouts/FarawayIsland_Interior/map.bin"
+    },
+    {
       "id": "LAYOUT_NAVEL_ROCK_EXTERIOR",
       "name": "NavelRock_Exterior_Layout",
       "width": 20,

@@ -70,6 +70,7 @@
 #define MULTICHOICE_JOIN_OR_LEAD                               63
 #define MULTICHOICE_TRAINER_TOWER_MODE                         64
 #define MULTICHOICE_TRADE_STATION                              65
+#define MULTICHOICE_SEVII_FARAWAY                               66
 
 #define MULTICHOICE_NONE                                      255
 

@@ -438,6 +438,12 @@ static const struct MenuAction sMultichoiceList_SeviiNavelBirth[] = {
     { gOtherText_Exit }
 };
 
+static const struct MenuAction sMultichoiceList_SeviiFaraway[] = {
+    { gText_SeviiIslands },
+    { gText_FarawayIsland },
+    { gOtherText_Exit }
+};
+
 static const struct MenuAction sMultichoiceList_Seagallop123[] = {
     { gText_OneIsland },
     { gText_TwoIsland },
@@ -562,6 +568,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] = {
     [MULTICHOICE_SEVII_NAVEL]                                = MULTICHOICE(sMultichoiceList_SeviiNavel),
     [MULTICHOICE_SEVII_BIRTH]                                = MULTICHOICE(sMultichoiceList_SeviiBirth),
     [MULTICHOICE_SEVII_NAVEL_BIRTH]                          = MULTICHOICE(sMultichoiceList_SeviiNavelBirth),
+    [MULTICHOICE_SEVII_FARAWAY]                              = MULTICHOICE(sMultichoiceList_SeviiFaraway),
     [MULTICHOICE_SEAGALLOP_123]                              = MULTICHOICE(sMultichoiceList_Seagallop123),
     [MULTICHOICE_SEAGALLOP_V23]                              = MULTICHOICE(sMultichoiceList_SeagallopV23),
     [MULTICHOICE_SEAGALLOP_V13]                              = MULTICHOICE(sMultichoiceList_SeagallopV13),

@@ -79,6 +79,30 @@ VermilionCity_EventScript_CheckSeagallopPresent::
 VermilionCity_EventScript_ChooseSeagallopDestRainbowPass::
 	goto_if_questlog EventScript_ReleaseEnd
 	special QuestLog_CutRecording
+	call VermilionCity_EventScript_CheckHasOldSeaMap
+	goto_if_eq VAR_RESULT, TRUE, VermilionCity_EventScript_HasOldSeaMap
+	goto VermilionCity_EventScript_ChooseSeagallopDestNoFaraway
+	end
+
+VermilionCity_EventScript_CheckHasOldSeaMap::
+	goto_if_unset FLAG_ENABLE_SHIP_FARAWAY_ISLAND, EventScript_SetResultFalse
+	checkitem ITEM_OLD_SEA_MAP
+	goto_if_eq VAR_RESULT, FALSE, EventScript_SetResultFalse
+	goto EventScript_SetResultTrue
+	end
+
+VermilionCity_EventScript_HasOldSeaMap::
+	message VermilionCity_Text_BoardSeagallopFerry
+	waitmessage
+	multichoice 13, 6, MULTICHOICE_SEVII_FARAWAY, FALSE
+	switch VAR_RESULT
+	case 0, VermilionCity_EventScript_ChooseSeagallopDestNoFaraway
+	case 1, EventScript_SailToFarawayIsland
+	case 2, EventScript_CancelSail
+	case 127, EventScript_CancelSail
+	end
+
+VermilionCity_EventScript_ChooseSeagallopDestNoFaraway::
 	call VermilionCity_EventScript_CheckHasMysticTicket
 	goto_if_eq VAR_RESULT, TRUE, VermilionCity_EventScript_HasMysticTicket
 	call VermilionCity_EventScript_CheckHasAuroraTicket
@@ -150,6 +174,12 @@ EventScript_SailToBirthIsland::
 	msgbox VermilionCity_Text_Seagallop12Departing
 	setvar VAR_0x8004, SEAGALLOP_VERMILION_CITY
 	setvar VAR_0x8006, SEAGALLOP_BIRTH_ISLAND
+	goto EventScript_SetSail
+	end
+
+EventScript_SailToFarawayIsland::
+	setvar VAR_0x8004, SEAGALLOP_VERMILION_CITY
+	setvar VAR_0x8006, SEAGALLOP_FARAWAY_ISLAND
 	goto EventScript_SetSail
 	end
 
