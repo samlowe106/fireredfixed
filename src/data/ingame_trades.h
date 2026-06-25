@@ -64,6 +64,86 @@ static const struct InGameTrade sInGameTrades[] = {
         .sheen = 10,
         .requestedSpecies = SPECIES_HAUNTER
     },
+    [INGAME_TRADE_GET_CHARMANDER] =
+    {
+        .nickname = _("CINDER"),
+        .species = SPECIES_CHARMANDER,
+        .ivs = {20, 20, 20, 20, 20, 20},
+        .abilityNum = 0,
+        .otId = 41001,
+        .conditions = {5, 5, 5, 5, 5},
+        .personality = 0x3F1A2C4D, // Timid
+        .heldItem = ITEM_NONE,
+        .mailNum = 255,
+        .otName = _("SAMUEL"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_BULBASAUR
+    },
+    [INGAME_TRADE_GET_SQUIRTLE] =
+    {
+        .nickname = _("LIQUID"),
+        .species = SPECIES_SQUIRTLE,
+        .ivs = {20, 20, 20, 20, 20, 20},
+        .abilityNum = 0,
+        .otId = 41002,
+        .conditions = {5, 5, 5, 5, 5},
+        .personality = 0x2E0B1D3C, // Mild
+        .heldItem = ITEM_NONE,
+        .mailNum = 255,
+        .otName = _("SAMUEL"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_CHARMANDER
+    },
+    [INGAME_TRADE_GET_BULBASAUR] =
+    {
+        .nickname = _("B REX"),
+        .species = SPECIES_BULBASAUR,
+        .ivs = {20, 20, 20, 20, 20, 20},
+        .abilityNum = 0,
+        .otId = 41003,
+        .conditions = {5, 5, 5, 5, 5},
+        .personality = 0x1D2E3F4A, // Sassy
+        .heldItem = ITEM_NONE,
+        .mailNum = 255,
+        .otName = _("SAMUEL"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_SQUIRTLE
+    },
+    [INGAME_TRADE_GET_KABUTO] =
+    {
+        .nickname = _("KABUTO"),
+        .species = SPECIES_KABUTO,
+        .ivs = {20, 20, 20, 20, 20, 20},
+        .abilityNum = 0,
+        .otId = 41004,
+        .conditions = {5, 5, 5, 5, 5},
+        .personality = 0x4A5B6C2D, // Adamant
+        .heldItem = ITEM_NONE,
+        .mailNum = 255,
+        .otName = _("SEVII"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_OMANYTE
+    },
+    [INGAME_TRADE_GET_OMANYTE] =
+    {
+        .nickname = _("OMANYTE"),
+        .species = SPECIES_OMANYTE,
+        .ivs = {20, 20, 20, 20, 20, 20},
+        .abilityNum = 0,
+        .otId = 41005,
+        .conditions = {5, 5, 5, 5, 5},
+        .personality = 0x5B6C7D3E, // Docile
+        .heldItem = ITEM_NONE,
+        .mailNum = 255,
+        .otName = _("SEVII"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_KABUTO
+    },
     [INGAME_TRADE_MR_MIME] =
     {
         .nickname = _("MIMIEN"),
