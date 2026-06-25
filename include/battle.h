@@ -402,8 +402,8 @@ struct BattleStruct
     u8 runTries;
     u8 caughtMonNick[POKEMON_NAME_LENGTH + 1];
     u8 field_78; // unused
-    u8 safariRockThrowCounter;
-    u8 safariBaitThrowCounter;
+    s8 safariEncounterState;
+    u8 unused_safari; // formerly the second lure counter; kept to preserve struct layout
     u8 safariEscapeFactor;
     u8 safariCatchFactor;
     u8 linkBattleVsSpriteId_V;
@@ -722,5 +722,22 @@ extern u8 gChosenActionByBattler[MAX_BATTLERS_COUNT];
 extern u8 gBattleTerrain;
 extern struct MultiBattlePokemonTx gMultiPartnerParty[3];
 extern u16 gRandomTurnNumber;
+
+// Safari Zone lure mechanics, modeled as a single signed "staircase" state
+// (safariEncounterState), applied immediately and held perpetually:
+//   Rock - agitates it: state -= 1, easier to catch but more likely to flee.
+//   Bait - distracts it: state += 1, harder to catch but less likely to flee.
+// safariCatchFactor holds the base catchRate (0-255) and safariEscapeFactor the
+// base flee factor (0-20); the helpers below shift them by the state when catch/
+// flee is checked. Each step is a uniform additive nudge (no multiplicative
+// distortion or quantization), so low-catch species behave predictably.
+#define SAFARI_FLEE_FACTOR_MAX      20  // flee% is factor * 5, so 20 caps flee at 100%
+#define SAFARI_STATE_MAX             6  // state clamped to [-SAFARI_STATE_MAX, +SAFARI_STATE_MAX]
+#define SAFARI_CATCH_STEP           15  // catchRate (0-255) change per Rock/Bait
+#define SAFARI_CATCH_MIN             5  // floor so deep Bait stays catchable (and odds != 0)
+#define SAFARI_FLEE_STEP             1  // flee factor change per Rock/Bait (x5 = % per step)
+
+u8 GetSafariEffectiveCatchRate(void);
+u8 GetSafariEffectiveFleeFactor(void);
 
 #endif // GUARD_BATTLE_H

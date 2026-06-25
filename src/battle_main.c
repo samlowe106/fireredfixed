@@ -2279,9 +2279,9 @@ static void BattleStartClearSetData(void)
     gLeveledUpInBattle = 0;
     gAbsentBattlerFlags = 0;
     gBattleStruct->runTries = 0;
-    gBattleStruct->safariRockThrowCounter = 0;
-    gBattleStruct->safariBaitThrowCounter = 0;
-    *(&gBattleStruct->safariCatchFactor) = gSpeciesInfo[GetMonData(&gEnemyParty[0], MON_DATA_SPECIES)].catchRate * 100 / 1275;
+    gBattleStruct->safariEncounterState = 0;
+    // Base catchRate is used directly (0-255); the lure staircase nudges it additively.
+    *(&gBattleStruct->safariCatchFactor) = gSpeciesInfo[GetMonData(&gEnemyParty[0], MON_DATA_SPECIES)].catchRate;
     *(&gBattleStruct->safariEscapeFactor) = gSpeciesInfo[GetMonData(&gEnemyParty[0], MON_DATA_SPECIES)].safariZoneFleeRate * 100 / 1275;
     if (gBattleStruct->safariEscapeFactor <= 1)
         gBattleStruct->safariEscapeFactor = 2;
@@ -4331,39 +4331,46 @@ static void HandleAction_Run(void)
     }
 }
 
+// Returns the effective catchRate (0-255) for the wild Pokemon, shifting the base by
+// the lure staircase: each Rock (state < 0) raises it, each Bait (state > 0) lowers it.
+u8 GetSafariEffectiveCatchRate(void)
+{
+    s32 catchRate = gBattleStruct->safariCatchFactor - gBattleStruct->safariEncounterState * SAFARI_CATCH_STEP;
+
+    if (catchRate > 255)
+        catchRate = 255;
+    else if (catchRate < SAFARI_CATCH_MIN)
+        catchRate = SAFARI_CATCH_MIN;
+    return catchRate;
+}
+
+// Returns the flee factor (flee% = factor * 5) for the wild Pokemon, shifting the base by
+// the lure staircase: each Rock (state < 0) raises it, each Bait (state > 0) lowers it.
+u8 GetSafariEffectiveFleeFactor(void)
+{
+    s32 factor = gBattleStruct->safariEscapeFactor - gBattleStruct->safariEncounterState * SAFARI_FLEE_STEP;
+
+    if (factor > SAFARI_FLEE_FACTOR_MAX)
+        factor = SAFARI_FLEE_FACTOR_MAX;
+    else if (factor < 0)
+        factor = 0;
+    return factor;
+}
+
 static void HandleAction_WatchesCarefully(void)
 {
     gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
     gBattle_BG0_X = 0;
     gBattle_BG0_Y = 0;
-    if (gBattleStruct->safariRockThrowCounter != 0)
-    {
-        --gBattleStruct->safariRockThrowCounter;
-        if (gBattleStruct->safariRockThrowCounter == 0)
-        {
-            *(&gBattleStruct->safariCatchFactor) = gSpeciesInfo[GetMonData(gEnemyParty, MON_DATA_SPECIES)].catchRate * 100 / 1275;
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MON_WATCHING;
-        }
-        else
-        {
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MON_ANGRY;
-        }
-    }
+    // The lure state is perpetual, so the reaction simply reflects its current sign:
+    // a Rock-agitated Pokemon stays angry and a Baited one keeps eating until the state
+    // is nudged back toward neutral. Nothing decays here.
+    if (gBattleStruct->safariEncounterState < 0)
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MON_ANGRY;
+    else if (gBattleStruct->safariEncounterState > 0)
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MON_EATING;
     else
-    {
-        if (gBattleStruct->safariBaitThrowCounter != 0)
-        {
-            --gBattleStruct->safariBaitThrowCounter;
-            if (gBattleStruct->safariBaitThrowCounter == 0)
-                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MON_WATCHING;
-            else
-                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MON_EATING;
-        }
-        else
-        {
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MON_WATCHING;
-        }
-    }
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MON_WATCHING;
     gBattlescriptCurrInstr = gBattlescriptsForSafariActions[0];
     gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
 }
@@ -4384,13 +4391,10 @@ static void HandleAction_ThrowBait(void)
     gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
     gBattle_BG0_X = 0;
     gBattle_BG0_Y = 0;
-    gBattleStruct->safariBaitThrowCounter += Random() % 5 + 2;
-    if (gBattleStruct->safariBaitThrowCounter > 6)
-        gBattleStruct->safariBaitThrowCounter = 6;
-    gBattleStruct->safariRockThrowCounter = 0;
-    gBattleStruct->safariCatchFactor >>= 1;
-    if (gBattleStruct->safariCatchFactor <= 2)
-        gBattleStruct->safariCatchFactor = 3;
+    // Bait nudges the staircase up one step (harder to catch, less likely to flee),
+    // immediately and permanently, up to the cap.
+    if (gBattleStruct->safariEncounterState < SAFARI_STATE_MAX)
+        gBattleStruct->safariEncounterState++;
     gBattlescriptCurrInstr = gBattlescriptsForSafariActions[2];
     gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
 }
@@ -4400,13 +4404,10 @@ static void HandleAction_ThrowRock(void)
     gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
     gBattle_BG0_X = 0;
     gBattle_BG0_Y = 0;
-    gBattleStruct->safariRockThrowCounter += Random() % 5 + 2;
-    if (gBattleStruct->safariRockThrowCounter > 6)
-        gBattleStruct->safariRockThrowCounter = 6;
-    gBattleStruct->safariBaitThrowCounter = 0;
-    gBattleStruct->safariCatchFactor <<= 1;
-    if (gBattleStruct->safariCatchFactor > 20)
-        gBattleStruct->safariCatchFactor = 20;
+    // A Rock nudges the staircase down one step (easier to catch, more likely to flee),
+    // immediately and permanently, down to the cap.
+    if (gBattleStruct->safariEncounterState > -SAFARI_STATE_MAX)
+        gBattleStruct->safariEncounterState--;
     gBattlescriptCurrInstr = gBattlescriptsForSafariActions[1];
     gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
 }

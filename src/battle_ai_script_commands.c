@@ -1712,23 +1712,11 @@ static void Cmd_flee(void)
 
 static void Cmd_if_random_safari_flee(void)
 {
-    u8 safariFleeRate;
+    // The effective flee factor reflects the current lure staircase. Note this AI roll is
+    // evaluated at action selection, before this turn's Rock/Bait executes, so a throw's
+    // flee effect first applies on the next turn (catch, checked at execution, is immediate).
+    u8 safariFleeRate = GetSafariEffectiveFleeFactor() * 5;
 
-    if (gBattleStruct->safariRockThrowCounter)
-    {
-        safariFleeRate = gBattleStruct->safariEscapeFactor * 2;
-        if (safariFleeRate > 20)
-            safariFleeRate = 20;
-    }
-    else if (gBattleStruct->safariBaitThrowCounter != 0)
-    {
-        safariFleeRate = gBattleStruct->safariEscapeFactor / 4;
-        if (safariFleeRate == 0)
-            safariFleeRate = 1;
-    }
-    else
-        safariFleeRate = gBattleStruct->safariEscapeFactor;
-    safariFleeRate *= 5;
     if ((u8)(Random() % 100) < safariFleeRate)
         sAIScriptPtr = T1_READ_PTR(sAIScriptPtr + 1);
     else
