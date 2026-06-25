@@ -21,7 +21,7 @@ This is a minimal ROM hack of Pokemon FireRed and LeafGreen that allows completi
 
 - [x] All TMs are now reusable
 - [x] The player can now run indoors
-- [x] The Safari Zone mechanics for Rock and Bait have been rebalanced to work closer to what was probably intended:
+- [x] The Safari Zone mechanics for Rock and Bait have been rebalanced to work closer to what was probably intended. Each throw now shifts the Pokemon one step along a single state that persists until you throw the opposite item, so the effects stack and you can dial in the trade-off:
   - [x] Rock increases the catch rate so Pokemon require fewer Safari Balls on average, but increases the risk of them fleeing
   - [x] Bait decreases the catch rate so Pokemon require more Safari Balls on average, but decreases the risk of them fleeing
 - [x] The FireRed/LeafGreen title screen (Charizard/flames or Venusaur/leaves, plus the logo and colors) is chosen at random every boot with equal probability
@@ -29,7 +29,7 @@ This is a minimal ROM hack of Pokemon FireRed and LeafGreen that allows completi
 
 ## Post-Game Changes
 
-- [ ] The Old Sea Map can now be obtained from Mr. Fuji after entering the Hall of Fame
+- [x] The Old Sea Map can now be obtained from Mr. Fuji after entering the Hall of Fame, and the Vermilion City ferry will take you to Faraway Island, where Mew can be caught (it hides and floats away through the grass, so corner it to start the battle)
 - [ ] After unlocking the National Dex, Eevees who reach enough friendship will be able to evolve into Umbreon at even levels or Espeon at odd levels
 - [ ] Raikou, Suicune, and Entei will all roam regardless of which starter Pokemon you chose
 - [x] Fixed Raikou and Entei permanently disappearing after they used Roar while roaming:

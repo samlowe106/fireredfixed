@@ -42,11 +42,19 @@ Raikou, Suicune, and Entei should all roam. Today only one roamer exists, chosen
 
 - [ ] Expand the single `struct Roamer` into an array of three and loop it through the roamer functions — [src/roamer.c](src/roamer.c)
 
-## Mr. Fuji — Old Sea Map (after the Hall of Fame)
+## Faraway Island + Mew (Old Sea Map payoff) — Phase 1 done
 
-- [x] Added `ITEM_OLD_SEA_MAP` (constant, item data + description, Emerald icon) — [src/data/items.json](src/data/items.json)
-- [x] Give script written: `EventScript_MrFujiOldSeaMap` (gated on `FLAG_SYS_GAME_CLEAR`) — [data/maps/LavenderTown_VolunteerPokemonHouse/scripts.inc](data/maps/LavenderTown_VolunteerPokemonHouse/scripts.inc)
-- [ ] Hook it into Mr. Fuji's object script (`EventScript_MrFuji`, which currently only gives the Poké Flute)
+Phase 1 (functional, reused FRLG tilesets) is implemented and builds. See the plan in
+`~/.claude/plans/okay-i-d-also-like-silly-honey.md`.
+
+- [x] `ITEM_OLD_SEA_MAP` (constant, item data + description, Emerald icon) — [src/data/items.json](src/data/items.json)
+- [x] Mr. Fuji hands over the Old Sea Map after the Hall of Fame and sets `FLAG_ENABLE_SHIP_FARAWAY_ISLAND` — [data/maps/LavenderTown_VolunteerPokemonHouse/scripts.inc](data/maps/LavenderTown_VolunteerPokemonHouse/scripts.inc)
+- [x] Two new maps: `FarawayIsland_Harbor` (reuses `LAYOUT_ISLAND_HARBOR`) + `FarawayIsland_Interior` (new grass layout, generated `map.bin`) — [data/maps/FarawayIsland_Interior/](data/maps/FarawayIsland_Interior/)
+- [x] Vermilion ferry offers Faraway Island when you hold the Old Sea Map; seagallop + sail-back wired — [data/maps/VermilionCity/scripts.inc](data/maps/VermilionCity/scripts.inc), [src/seagallop.c](src/seagallop.c)
+- [x] Faithful Mew encounter: dodges in the grass (`MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE_IN_GRASS`), corner + interact → `StartLegendaryBattle` — [data/maps/FarawayIsland_Interior/scripts.inc](data/maps/FarawayIsland_Interior/scripts.inc)
+- [ ] **Playtest**: sail there, confirm Mew dodges/corners/battles/catches and re-shows after a defeat (build passing ≠ plays correctly)
+- [ ] **Phase 2 (optional, faithful visuals)**: the converter exists — [devtools/port_emerald_area.py](devtools/port_emerald_area.py) ports the layout + both tilesets from a pokeemerald checkout (copies tiles verbatim; re-bases secondary IDs +0x80, secondary tiles +128, secondary pals +1 slot, metatile attrs u16→u32). To run: clone pokeemerald, `python3 devtools/port_emerald_area.py --emerald ../pokeemerald --map FarawayIsland_Interior --name FarawayReal`, paste the four snippets from `port_report.md`, point `FarawayIsland_Interior/map.json` at the new `LAYOUT_…`, drop the placeholder `data/layouts/FarawayIsland_Interior/map.bin`, rebuild. (Conversion math is unit-tested; end-to-end needs the Emerald checkout.)
+- [ ] **Polish**: dedicated `MAPSEC_FARAWAY_ISLAND` (currently reuses `MAPSEC_BIRTH_ISLAND`); optional Emerald-style discovery cutscene ('!' bubble + grass-emerge); remove the now-dead `MrFujiOldSeaMapNotCleared`/`Already` sub-scripts
 
 ## Verify / cleanup
 
