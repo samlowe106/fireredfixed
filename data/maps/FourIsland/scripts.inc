@@ -161,3 +161,31 @@ FourIsland_EventScript_IslandSign::
 FourIsland_EventScript_LoreleisHouseSign::
 	msgbox FourIsland_Text_LoreleisHouse, MSGBOX_SIGN
 	end
+
+@ Circular Kanto-starter trade: give BULBASAUR, receive CHARMANDER. Repeatable.
+FourIsland_EventScript_StarterTrade::
+	lock
+	faceplayer
+	setvar VAR_0x8008, INGAME_TRADE_GET_CHARMANDER
+	call EventScript_GetInGameTradeSpeciesInfo
+	msgbox Trade_Text_LookingForMonWannaTradeForMon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, FourIsland_EventScript_StarterTradeDecline
+	call EventScript_ChooseMonForInGameTrade
+	goto_if_ge VAR_0x8004, PARTY_SIZE, FourIsland_EventScript_StarterTradeDecline
+	call EventScript_GetInGameTradeSpecies
+	goto_if_ne VAR_RESULT, VAR_0x8009, FourIsland_EventScript_StarterTradeWrongMon
+	call EventScript_DoInGameTrade
+	msgbox Trade_Text_HeyThanks
+	release
+	end
+
+FourIsland_EventScript_StarterTradeDecline::
+	msgbox Trade_Text_AwwOhWell
+	release
+	end
+
+FourIsland_EventScript_StarterTradeWrongMon::
+	bufferspeciesname STR_VAR_1, VAR_0x8009
+	msgbox Trade_Text_WhatThatsNoMon
+	release
+	end
